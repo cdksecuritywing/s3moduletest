@@ -3,8 +3,21 @@ const project = new JsiiProject({
   author: 'securitywing',
   authorAddress: 'syras@securitywing.com',
   defaultReleaseBranch: 'main',
-  name: 's3moduletest',
-  repositoryUrl: 'https://github.com/syras/s3moduletest.git',
+
+  
+  //
+  name: '@cdksecuritywing/mytestmodule',
+  repositoryUrl: 'https://github.com/cdksecuritywing/s3moduletest.git',
+  jest: false,
+  devDeps: [
+    'fs-extra',
+    '@types/fs-extra@^8',
+
+  ],
+  deps: ['projen'],
+  peerDeps: ['projen'],
+  npmDistTag: 'latest',
+  npmRegistryUrl: 'https://npm.pkg.github.com',
 
   // deps: [],                /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
