@@ -4,7 +4,7 @@ const project = new JsiiProject({
   authorAddress: 'syras@securitywing.com',
   defaultReleaseBranch: 'main',
 
-  
+
   //
   name: '@cdksecuritywing/mytestmodule',
   repositoryUrl: 'https://github.com/cdksecuritywing/s3moduletest.git',

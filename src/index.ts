@@ -71,7 +71,7 @@ class SampleCode extends Component {
     const libDir = path.join(this.demoProject.srcdir, 'lib');
     new SampleDir(this.demoProject, libDir, {
       files: {
-        [`${this.demoProject.projectName}-stack.ts`]: this.projectStackContents(this.demoProject.projectName),
+        [`${this.demoProject.projectName}-stack.ts`]: this.projectStackContents(),
       },
     });
 
@@ -127,7 +127,7 @@ app.synth();`;
 
 
   // custom template
-  private projectStackContents(projectName: string): string {
+  private projectStackContents(): string {
 
     return `
     import * as cdk from '@aws-cdk/core';
