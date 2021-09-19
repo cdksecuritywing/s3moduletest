@@ -132,7 +132,7 @@ app.synth();`;
     import * as s3 from '@aws-cdk/aws-s3';
 import * as cdk from '@aws-cdk/core';
 
-export class NotifyingBucket extends cdk.Construct {
+export class ${projectName}Stack extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string) {
     super(scope, id);
     const bucket = new s3.Bucket(this, 'bucket', {
