@@ -71,7 +71,7 @@ class SampleCode extends Component {
     const libDir = path.join(this.demoProject.srcdir, 'lib');
     new SampleDir(this.demoProject, libDir, {
       files: {
-        [`${this.demoProject.projectName}-stack.ts`]: this.projectStackContents(),
+        [`${this.demoProject.projectName}-stack.ts`]: this.projectStackContents(this.demoProject.projectName),
       },
     });
 
