@@ -131,7 +131,7 @@ app.synth();`;
 
     return `
     import * as cdk from '@aws-cdk/core';
-import * as s3mod from 's3module';
+    import * as s3mod from 's3module';
 
 export class AppStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -150,9 +150,8 @@ export class AppStack extends cdk.Stack {
 
 `;
 
-
   }
 
-  //////////  custom tempalte
+  //////////  custom template
 
 }

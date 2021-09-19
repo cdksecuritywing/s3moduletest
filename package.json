@@ -1,5 +1,5 @@
 {
-  "name": "@cdksecuritywing/mytestmodule",
+  "name": "@cdksecuritywing/s3moduletest",
   "repository": {
     "type": "git",
     "url": "https://github.com/cdksecuritywing/s3moduletest.git"
