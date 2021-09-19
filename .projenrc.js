@@ -6,7 +6,7 @@ const project = new JsiiProject({
 
 
   //
-  name: '@cdksecuritywing/mytestmodule',
+  name: '@cdksecuritywing/s3moduletest',
   repositoryUrl: 'https://github.com/cdksecuritywing/s3moduletest.git',
   jest: false,
   devDeps: [
