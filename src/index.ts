@@ -127,30 +127,29 @@ app.synth();`;
 
 
   // custom template
-  private projectStackContents(): string {
+  private projectStackContents(projectName: string): string {
+    return `import { Construct, Stack, StackProps } from '@aws-cdk/core';
+import { Topic } from '@aws-cdk/aws-sns';
+import { EmailSubscription } from '@aws-cdk/aws-sns-subscriptions';
+export interface ${projectName}StackProps extends StackProps { }
+const errorNotificationEmails = ['support@support.com'];
 
-    return `
-    import * as cdk from '@aws-cdk/core';
-    import * as s3mod from 's3module';
-
-export class ${projectName}Stack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+export class ${projectName}Stack extends Stack {
+  constructor(scope: Construct, id: string, props?: ${projectName}StackProps) {
     super(scope, id, props);
-
-    // The code that defines your stack goes here
-    new s3mod.NotifyingBucket(this, 'MyNotifyingBucket', {
-      prefix: 'images/',
-      nameofBucket: "syras1-nation-bucket"
+    const STAGE = this.node.tryGetContext('STAGE');
+    const errorNotificationTopic = new Topic(this, '${projectName}-error-notification-topic', {
+      displayName: \`${projectName}-error-notification-topic-\${STAGE}\`,
+      topicName: \`${projectName}-error-notification-topic-\${STAGE}\`,
     });
-
+    
+    errorNotificationEmails.forEach(email => {
+      errorNotificationTopic.addSubscription(new EmailSubscription(email));
+    });
   }
-}
-
-   
-
-`;
-
+}`;
   }
+
 
   //////////  custom template
 
