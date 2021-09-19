@@ -128,26 +128,21 @@ app.synth();`;
 
   // custom template
   private projectStackContents(projectName: string): string {
-    return `import { Construct, Stack, StackProps } from '@aws-cdk/core';
-import { Topic } from '@aws-cdk/aws-sns';
-import { EmailSubscription } from '@aws-cdk/aws-sns-subscriptions';
-export interface ${projectName}StackProps extends StackProps { }
-const errorNotificationEmails = ['support@support.com'];
+    return `
+    import * as s3 from '@aws-cdk/aws-s3';
+import * as cdk from '@aws-cdk/core';
 
-export class ${projectName}Stack extends Stack {
-  constructor(scope: Construct, id: string, props?: ${projectName}StackProps) {
-    super(scope, id, props);
-    const STAGE = this.node.tryGetContext('STAGE');
-    const errorNotificationTopic = new Topic(this, '${projectName}-error-notification-topic', {
-      displayName: \`${projectName}-error-notification-topic-\${STAGE}\`,
-      topicName: \`${projectName}-error-notification-topic-\${STAGE}\`,
+export class NotifyingBucket extends cdk.Construct {
+  constructor(scope: cdk.Construct, id: string) {
+    super(scope, id);
+    const bucket = new s3.Bucket(this, 'bucket', {
+      bucketName: "mys3-sxithbucketnew12",
     });
     
-    errorNotificationEmails.forEach(email => {
-      errorNotificationTopic.addSubscription(new EmailSubscription(email));
-    });
   }
-}`;
+}
+    
+    `;
   }
 
 
